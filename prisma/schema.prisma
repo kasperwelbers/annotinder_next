@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+// ENUMS
+enum JobSetUnitType {
+    code
+    train
+    test
+}
+enum JobSetUnitPosition {
+    pre
+    unit
+    post
+}
+enum JobUserStatus {
+    IN_PROGRESS
+    DONE
+    BLOCKED
+}
+
+// TABLES
+model Job {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    title     String
+    provenance Json?
+    archived  Boolean  @default(false)
+}
+
+model Unit {
+    id        String   @id @default(cuid())
+    updatedAt DateTime @updatedAt
+    job       Job
+    externalId String
+    unit      Json
+    conditionals Json?
+}
+
+model JobSet {
+    id        String   @id @default(cuid())
+    job       Job
+    jobset    String
+    archived  Boolean  @default(false)
+    visible   Boolean  @default(true)
+    acceptNew Boolean  @default(true)
+}
+
+model JobSetUnit {
+    jobSet    JobSet
+    unit      Unit
+    fixedIndex Int?
+    position  JobSetUnitPosition
+    type      JobSetUnitType
+}
+
+model JobUser {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    userId    String
+    job       CodingJob
+    jobSet    JobSet
+    status    JobUserStatus @default(IN_PROGRESS)
+    archived  Boolean  @default(false)
+}
+
+model Annotation {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    jobUser   JobUser
+    unit      Unit
+    annotation Json
+    archived  Boolean  @default(false)
+}

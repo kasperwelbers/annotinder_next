@@ -1,0 +1,67 @@
+{
+  "name": "annotinder_next",
+  "description": "The AnnoTinder Next Application",
+  "author": "Kasper Welbers",
+  "keywords": [
+    "react",
+    "annotation"
+  ],
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccs-amsterdam/annotinder_next"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.11.0",
+    "@tanstack/react-query": "^4.28.0",
+    "axios": "^1.0.0",
+    "compromise": "^14.5.0",
+    "middlecat-react": "^0.2.0",
+    "next": "^13.2.4",
+    "perfect-arrows": "^0.3.7",
+    "qrcode.react": "^3.1.0",
+    "randomcolor": "^0.6.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-full-screen": "^1.1.1",
+    "react-icons": "^4.8.0",
+    "react-markdown": "^8.0.3",
+    "react-papaparse": "^4.1.0",
+    "react-router-dom": "^6.4.1",
+    "react-scripts": "5.0.1",
+    "react-swipeable": "^7.0.0",
+    "semantic-ui-react": "^2.1.4",
+    "styled-components": "^5.3.6",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.21.3",
+    "@types/node": "^18.15.5",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-config-next": "^13.2.4",
+    "prisma": "^4.11.0",
+    "typescript": "^5.0.2"
+  },
+  "ct3aMetadata": {
+    "initVersion": "7.12.0"
+  }
+}
